@@ -1,0 +1,77 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ContentMetaData>
+  <ContentType>XsltApplication</ContentType>
+  <ContentName>opdsroot</ContentName>
+  <Fields>
+    <Binary attachment="opdsroot" />
+    <MimeType><![CDATA[text/xml]]></MimeType>
+    <OmitXmlDeclaration>false</OmitXmlDeclaration>
+    <ResponseEncoding><![CDATA[utf-8]]></ResponseEncoding>
+    <WithChildren>false</WithChildren>
+    <Cacheable>false</Cacheable>
+    <CacheableForLoggedInUser>false</CacheableForLoggedInUser>
+    <CacheByPath>true</CacheByPath>
+    <CacheByParams>false</CacheByParams>
+    <CacheByLanguage>false</CacheByLanguage>
+    <CacheByHost>false</CacheByHost>
+    <AbsoluteExpiration>-1</AbsoluteExpiration>
+    <SlidingExpirationMinutes>-1</SlidingExpirationMinutes>
+    <CustomCacheKey><![CDATA[]]></CustomCacheKey>
+    <DisplayName><![CDATA[opdsroot]]></DisplayName>
+    <Description><![CDATA[]]></Description>
+    <Scenario><![CDATA[]]></Scenario>
+    <ActionTypeName><![CDATA[]]></ActionTypeName>
+    <IsModal>false</IsModal>
+    <Disabled>false</Disabled>
+    <Clear>false</Clear>
+    <Icon><![CDATA[File]]></Icon>
+    <StyleHint><![CDATA[]]></StyleHint>
+    <RequiredPermissions></RequiredPermissions>
+    <DeepPermissionCheck>false</DeepPermissionCheck>
+    <IncludeBackUrl>0</IncludeBackUrl>
+    <CacheControl>Nondefined</CacheControl>
+    <MaxAge><![CDATA[]]></MaxAge>
+    <CustomUrlParameters><![CDATA[]]></CustomUrlParameters>
+    <Owner>
+      <Path>/Root/IMS/BuiltIn/Portal/plastic</Path>
+    </Owner>
+    <Hidden>false</Hidden>
+    <Index>0</Index>
+    <EnableLifespan>false</EnableLifespan>
+    <ValidFrom>0001-01-01T00:00:00</ValidFrom>
+    <ValidTill>0001-01-01T00:00:00</ValidTill>
+    <CreatedBy>
+      <Path>/Root/IMS/BuiltIn/Portal/plastic</Path>
+    </CreatedBy>
+    <VersionCreatedBy>
+      <Path>/Root/IMS/BuiltIn/Portal/plastic</Path>
+    </VersionCreatedBy>
+    <CreationDate>2019-08-04T06:34:41.06</CreationDate>
+    <VersionCreationDate>2019-08-04T06:34:41.06</VersionCreationDate>
+    <ModifiedBy>
+      <Path>/Root/IMS/BuiltIn/Portal/plastic</Path>
+    </ModifiedBy>
+    <VersionModifiedBy>
+      <Path>/Root/IMS/BuiltIn/Portal/plastic</Path>
+    </VersionModifiedBy>
+    <ModificationDate>2019-08-04T08:06:41.98</ModificationDate>
+    <VersionModificationDate>2019-08-04T08:06:41.98</VersionModificationDate>
+    <TrashDisabled>false</TrashDisabled>
+    <IsTaggable>false</IsTaggable>
+    <IsRateable>false</IsRateable>
+    <RateAvg>0.0000</RateAvg>
+    <RateCount>0</RateCount>
+    <Sharing />
+  </Fields>
+  <Permissions>
+    <Clear />
+    <Identity path="/Root/IMS/BuiltIn/Portal/Visitor">
+      <See>Allowed</See>
+      <Preview>Allowed</Preview>
+      <PreviewWithoutWatermark>Allowed</PreviewWithoutWatermark>
+      <PreviewWithoutRedaction>Allowed</PreviewWithoutRedaction>
+      <Open>Allowed</Open>
+      <RunApplication>Allowed</RunApplication>
+    </Identity>
+  </Permissions>
+</ContentMetaData>

@@ -1,0 +1,98 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xsl:stylesheet version="1.0" 
+                xmlns="http://www.w3.org/2005/Atom" 
+                xmlns:dcterms="http://purl.org/dc/terms/" 
+                xmlns:pse="http://vaemendis.net/opds-pse/ns" 
+                xmlns:opds="http://opds-spec.org/2010/catalog"
+                xmlns:opensearch="http://a9.com/-/spec/opensearch/1.1/"
+                xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+    xmlns:msxsl="urn:schemas-microsoft-com:xslt" exclude-result-prefixes="msxsl">
+  <xsl:output method="xml" indent="yes"/>
+
+  <xsl:template match="/">
+    <feed xmlns="http://www.w3.org/2005/Atom" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:pse="http://vaemendis.net/opds-pse/ns" xmlns:opds="http://opds-spec.org/2010/catalog" xml:lang="en" xmlns:opensearch="http://a9.com/-/spec/opensearch/1.1/">
+      <id>
+        <xsl:value-of select="Content/Fields/Id"/>-book<xsl:value-of select="Content/Fields/Id"/>
+     </id>
+      <title>
+        <xsl:value-of select="Content/Fields/DisplayName" disable-output-escaping="yes"/>-<xsl:value-of select="count(Children/Content)"/> items</title>
+      <updated>
+        <xsl:value-of select="Content/Fields/ModificationDate"/>
+      </updated>
+      <!--<icon>/theme/favicon.ico</icon>-->
+      <author>
+        <name>sensenet server</name>
+        <uri>http://sensenet.com/</uri>
+      </author>
+      <link type="application/atom+xml; profile=opds-catalog; kind=acquisition" rel="self" href="{Content/Actions/opdsfiles}"/>
+      <link type="application/atom+xml; profile=opds-catalog; kind=navigation" rel="start" href="/?action=opdsroot"/>
+      <xsl:for-each select="Content/Children/Content">
+        <xsl:variable name="Ext">
+          <xsl:call-template name="GetExtension">
+            <xsl:with-param name="Name" select="substring-after(ContentName, '.')"/>
+          </xsl:call-template>
+        </xsl:variable>
+        <xsl:variable name="Mime">
+          <xsl:call-template name="GetMime">
+            <xsl:with-param name="Ext" select="$Ext"/>
+          </xsl:call-template>
+        </xsl:variable>
+        <entry>
+          <title>
+            <xsl:value-of select="Fields/DisplayName"/>
+          </title>
+          <id>
+            <xsl:value-of select="Fields/Id"/>
+          </id>
+          <author>
+            <name></name>
+          </author>
+          <updated>
+            <xsl:value-of select="Fields/ModificationDate"/>
+          </updated>
+          <content type="html">
+            <xsl:value-of select="Fields/DisplayName"/>
+            (<xsl:value-of select="number(Fields/Size)"/> bytes)
+            <xsl:value-of select="Fields/Description"/>
+          </content>
+          <dcterms:language>UND</dcterms:language>
+          <category label="category"></category>
+          <!--<link type="image/jpeg" rel="http://opds-spec.org/image" href="/opds-books/books/116870/Douglas%20Adams%20-%20Galaxis%20utikalauz%20stopposoknak_olvasOMmani_.epub?cover=true"/>-->
+          <!--<link type="image/jpeg" rel="http://opds-spec.org/image/thumbnail" href="/opds-books/books/116870/Douglas%20Adams%20-%20Galaxis%20utikalauz%20stopposoknak_olvasOMmani_.epub?cover=true"/>-->
+          <link type="{normalize-space($Mime)}" rel="http://opds-spec.org/acquisition" href="{Actions/Browse}"/>
+        </entry>
+      </xsl:for-each>
+    </feed>
+  </xsl:template>
+
+  <xsl:template name="GetExtension">
+    <xsl:param name="Name"/>
+    <xsl:choose>
+      <xsl:when test="contains($Name, '.')">
+        <xsl:call-template name="GetExtension">
+          <xsl:with-param name="Name" select="substring-after(string($Name), '.')"/>
+        </xsl:call-template>        
+      </xsl:when>
+      <xsl:otherwise>
+        <xsl:value-of select="$Name"/>
+      </xsl:otherwise>
+    </xsl:choose>
+  </xsl:template>
+
+  <!--Techincal Debt: tolowwer-->
+  <xsl:template name="GetMime">
+    <xsl:param name="Ext"/>
+    <xsl:choose>
+      <xsl:when test="$Ext = 'epub'">
+        application/epub+zip
+      </xsl:when>
+      <xsl:when test="$Ext = 'pdf'">
+        application/pdf
+      </xsl:when>      
+      <xsl:otherwise>
+      </xsl:otherwise>
+    </xsl:choose>
+    
+  </xsl:template>
+  
+</xsl:stylesheet>
